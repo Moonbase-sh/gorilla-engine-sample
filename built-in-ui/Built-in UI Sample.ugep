@@ -1,0 +1,173 @@
+{
+  "version": "v3.3.0",
+  "ymlFiles": [],
+  "scriptFiles": [
+    {
+      "name": "Built-in UI Sample.js",
+      "path": "esbuild/Built-in UI Sample.js",
+      "entryPoint": "yes"
+    }
+  ],
+  "sharedFiles": [],
+  "blobFiles": [],
+  "assetFiles": [
+    {
+      "name": "fonts",
+      "path": "assets/fonts"
+    },
+    {
+      "name": "images",
+      "path": "assets/images"
+    },
+    {
+      "name": "instruments",
+      "path": "assets/instruments"
+    }
+  ],
+  "iconFiles": [],
+  "nodeModules": [],
+  "nativePlugins": [],
+  "presets": [
+    {
+      "name": "factory",
+      "path": "assets/Presets/Factory"
+    }
+  ],
+  "nks": {
+    "xmlDefinition": [],
+    "presets": [],
+    "instrumentPlist": [],
+    "databaseFiles": [],
+    "images": []
+  },
+  "scriptEntryPoint": {
+    "name": "Built-in UI Sample.js",
+    "path": "esbuild/Built-in UI Sample.js",
+    "entryPoint": "yes"
+  },
+  "ymlEntryPoint": null,
+  "blobEntryPoint": null,
+  "projectFileDir": "",
+  "projectFileName": "Built-in UI Sample.ugep",
+  "projectName": "Built-in UI Sample",
+  "installerScripts": {
+    "pre": {
+      "mac": "",
+      "windows": ""
+    },
+    "post": {
+      "mac": "",
+      "windows": "@echo off\r\nsetlocal\r\nset \"DESTINATION_DIR=%ProgramData%\\Moonbase\\Built-in UI Sample\\scripts\"\r\nset \"DESTINATION=%DESTINATION_DIR%\\credman.ps1\"\r\nif not exist \"%DESTINATION_DIR%\" mkdir \"%DESTINATION_DIR%\"\r\nif errorlevel 1 exit /b 1\r\n>\"%DESTINATION%\" echo if ^(-not ^([System.Management.Automation.PSTypeName]'CredMan.CredentialManager'^).Type^) ^{\r\n>>\"%DESTINATION%\" echo   Add-Type -TypeDefinition @'\r\n>>\"%DESTINATION%\" echo using System;\r\n>>\"%DESTINATION%\" echo using System.Runtime.InteropServices;\r\n>>\"%DESTINATION%\" echo.\r\n>>\"%DESTINATION%\" echo namespace CredMan ^{\r\n>>\"%DESTINATION%\" echo   public static class CredentialManager ^{\r\n>>\"%DESTINATION%\" echo     [StructLayout^(LayoutKind.Sequential, CharSet = CharSet.Unicode^)]\r\n>>\"%DESTINATION%\" echo     public struct CREDENTIAL ^{\r\n>>\"%DESTINATION%\" echo       public uint Flags;\r\n>>\"%DESTINATION%\" echo       public uint Type;\r\n>>\"%DESTINATION%\" echo       public string TargetName;\r\n>>\"%DESTINATION%\" echo       public string Comment;\r\n>>\"%DESTINATION%\" echo       public System.Runtime.InteropServices.ComTypes.FILETIME LastWritten;\r\n>>\"%DESTINATION%\" echo       public uint CredentialBlobSize;\r\n>>\"%DESTINATION%\" echo       public IntPtr CredentialBlob;\r\n>>\"%DESTINATION%\" echo       public uint Persist;\r\n>>\"%DESTINATION%\" echo       public uint AttributeCount;\r\n>>\"%DESTINATION%\" echo       public IntPtr Attributes;\r\n>>\"%DESTINATION%\" echo       public string TargetAlias;\r\n>>\"%DESTINATION%\" echo       public string UserName;\r\n>>\"%DESTINATION%\" echo     ^}\r\n>>\"%DESTINATION%\" echo.\r\n>>\"%DESTINATION%\" echo     [DllImport^(\"Advapi32.dll\", EntryPoint = \"CredReadW\", CharSet = CharSet.Unicode, SetLastError = true^)]\r\n>>\"%DESTINATION%\" echo     public static extern bool CredRead^(string target, uint type, uint flags, out IntPtr credentialPtr^);\r\n>>\"%DESTINATION%\" echo.\r\n>>\"%DESTINATION%\" echo     [DllImport^(\"Advapi32.dll\", EntryPoint = \"CredWriteW\", CharSet = CharSet.Unicode, SetLastError = true^)]\r\n>>\"%DESTINATION%\" echo     public static extern bool CredWrite^(ref CREDENTIAL credential, uint flags^);\r\n>>\"%DESTINATION%\" echo.\r\n>>\"%DESTINATION%\" echo     [DllImport^(\"Advapi32.dll\", EntryPoint = \"CredDeleteW\", CharSet = CharSet.Unicode, SetLastError = true^)]\r\n>>\"%DESTINATION%\" echo     public static extern bool CredDelete^(string target, uint type, uint flags^);\r\n>>\"%DESTINATION%\" echo.\r\n>>\"%DESTINATION%\" echo     [DllImport^(\"Advapi32.dll\", SetLastError = true^)]\r\n>>\"%DESTINATION%\" echo     public static extern void CredFree^(IntPtr buffer^);\r\n>>\"%DESTINATION%\" echo   ^}\r\n>>\"%DESTINATION%\" echo ^}\r\n>>\"%DESTINATION%\" echo '@\r\n>>\"%DESTINATION%\" echo ^}\r\nif errorlevel 1 exit /b 1\r\nif not exist \"%DESTINATION%\" exit /b 1\r\necho Installed Product Hub credential bootstrap: \"%DESTINATION%\"\r\nexit /b 0"
+    }
+  },
+  "license": {
+    "contents": "",
+    "path": "licence.txt",
+    "mime": "",
+    "isFile": true
+  },
+  "signing": {
+    "enabled": false,
+    "identity": "",
+    "pathToKeychain": "",
+    "keychainPassword": "",
+    "applicationIdentity": "",
+    "certificatePath": "",
+    "certificatePassword": "",
+    "timestampServer": "http://timestamp.digicert.com"
+  },
+  "notarization": {
+    "enabled": false,
+    "username": "",
+    "password": "",
+    "teamID": ""
+  },
+  "enabledNodeNativeModules": [
+    "writesmf",
+    "hwfp"
+  ],
+  "pluginConfig": {
+    "buildAAX": true,
+    "buildVST": true,
+    "buildVST3": true,
+    "buildAU": true,
+    "buildStandalone": true,
+    "isEffect": false,
+    "supportsMPE": false,
+    "hasMidiInput": true,
+    "hasMidiOutput": false,
+    "canRelocateBlob": false,
+    "macInstallerDiskImage": false,
+    "createVendorSubdirOnWindows": true,
+    "iaaName": "Moonbase: Built-in UI Sample",
+    "aaxIdentifier": "com.moonbase.builtinuisample",
+    "cfBundleIdentifier": "com.moonbase.builtinuisample",
+    "auExportPrefixQuoted": "GEShellAU",
+    "auExportPrefix": "GEShellAU",
+    "versionString": "1.0.0",
+    "version": "1.0.0",
+    "versionCode": "0x010000",
+    "manufacturerCode": "0x4d4f4f4e",
+    "pluginCode": "0x4255494c",
+    "manufacturerEmail": "support@moonbase.com",
+    "manufacturerWebsite": "www.moonbase.com",
+    "manufacturer": "Moonbase",
+    "desc": "Powered by Gorilla Engine",
+    "name": "Built-in UI Sample",
+    "auFourCharPluginCode": "BUIL",
+    "auFourCharManufacturerCode": "MOON",
+    "appUUID": "0bc2691e-9316-4d5a-a73f-480c1840af9f",
+    "installerNameTemplate": "{manufacturer} - {name} ({version})",
+    "hasSidechain": false,
+    "numStereoOuts": 1,
+    "numQuadOuts": 0,
+    "num51Outs": 0,
+    "numAutomatableParams": 100,
+    "installerOutputDir": "installer",
+    "pageTable": "",
+    "midiEnabledOnStartup": false,
+    "codemeter": false,
+    "codemeterProductCode": 0,
+    "codemeterProtectionCode": 0,
+    "codemeterTrial": false,
+    "codemeterTrialCode": 0,
+    "codemeterTrialDays": 30,
+    "codemeterExpansionsEncryptionSeed": "00000000000000000000000000000000",
+    "audioEnabledOnStartup": false,
+    "contentEncryptionEnabled": true,
+    "contentEncryptionKey": "15153a5567da205024a5b0ee571223a1",
+    "eula": "Your license agreement goes here. Either as text or as a rich text file.",
+    "experimentalDebuggerSupport": true
+  },
+  "paceConfig": {
+    "wraptoolPathMacOs": "/Applications/PACEAntiPiracy/Eden/Fusion/Current/bin/wraptool",
+    "wraptoolPathWindows": "C:\\Program Files (x86)\\PACEAntiPiracy\\Eden\\Fusion\\Versions\\5\\wraptool.exe",
+    "iLokToolPathMacOs": "/usr/local/bin/iloktool",
+    "iLokToolPathWindows": "C:\\Program Files (x86)\\iLok License Manager\\iloktool.exe",
+    "wraptoolLicenseInCloud": true,
+    "command": "sign",
+    "iLokAccountNameMacOs": "",
+    "iLokAccountNameWindows": "",
+    "iLokAccountPasswordMacOs": "",
+    "iLokAccountPasswordWindows": "",
+    "wrapConfigUuid": "",
+    "keyFilePath": "",
+    "keyFilePassword": "",
+    "signID": "",
+    "pathToKeychain": "",
+    "keychainPassword": "",
+    "loginKeychainPassword": "",
+    "enabled": true,
+    "iLokAccountName": "",
+    "iLokAccountPassword": ""
+  },
+  "producthubConfig": {
+    "uploadEnabled": false,
+    "downloaderEnabled": false,
+    "productId": ""
+  },
+  "createZipPackage": false,
+  "includeBinariesInZip": false,
+  "session": null,
+  "engineSourceDir": "submodules/ge-shell"
+}

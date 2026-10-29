@@ -1,0 +1,89 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Start application",
+      "type": "node-terminal",
+      "request": "launch",
+      "presentation": {
+        "hidden": true,
+        "group": "",
+        "order": 1
+      },
+      "command": "\"/Applications/Moonbase/Custom UI Sample.app/Contents/MacOS/Custom UI Sample\"",
+      "windows": {
+        "command": "&\"C:\\Program Files\\Moonbase\\Custom UI Sample\\Custom UI Sample.exe\"",
+        "remoteRoot": "C:\\ProgramData\\Moonbase\\Custom UI Sample"
+      },
+      "env": {
+        "MOONBASE_CUSTOM_UI_SAMPLE_DEBUG_PORT": "43210"
+      },
+      "cwd": "${workspaceFolder}",
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/esbuild/**/*.js"],
+      // The deployed bundle lives outside the workspace, so the default
+      // "${workspaceFolder}/**" gating would discard its source map.
+      "resolveSourceMapLocations": null,
+      "localRoot": "${workspaceFolder}/esbuild",
+      "remoteRoot": "/Library/Application Support/Moonbase/Custom UI Sample",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Attach to started application",
+      "type": "node",
+      "request": "attach",
+      "presentation": {
+        "hidden": true,
+        "group": "",
+        "order": 1
+      },
+      "port": 43210,
+      "cwd": "${workspaceFolder}",
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/esbuild/**/*.js"],
+      // The deployed bundle lives outside the workspace, so the default
+      // "${workspaceFolder}/**" gating would discard its source map.
+      "resolveSourceMapLocations": null,
+      "localRoot": "${workspaceFolder}/esbuild",
+      "remoteRoot": "/Library/Application Support/Moonbase/Custom UI Sample",
+      "windows": {
+        "remoteRoot": "C:\\ProgramData\\Moonbase\\Custom UI Sample"
+      },
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Attach to Plugin Inspector",
+      "type": "node",
+      "request": "attach",
+      "port": "${input:inspectorPort}",
+      "cwd": "${workspaceFolder}",
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/esbuild/**/*.js"],
+      "resolveSourceMapLocations": null,
+      "localRoot": "${workspaceFolder}/esbuild",
+      "remoteRoot": "/Library/Application Support/Moonbase/Custom UI Sample",
+      "windows": {
+        "remoteRoot": "C:\\ProgramData\\Moonbase\\Custom UI Sample"
+      },
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ],
+  "inputs": [
+    {
+      "id": "inspectorPort",
+      "type": "promptString",
+      "description": "Inspector port (shown in ws://127.0.0.1:PORT/...)",
+      "default": "9229"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Start & Attach",
+      "configurations": ["Start application", "Attach to started application"],
+      "presentation": {
+        "group": "Start & Attach",
+        "order": 1
+      }
+    }
+  ]
+}

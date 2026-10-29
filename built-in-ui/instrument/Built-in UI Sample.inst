@@ -1,0 +1,152 @@
+{
+  "Module": "Instrument",
+  "Name": "Built-in UI Sample",
+  "Blob Number": "None",
+  "Blob Path": "Gorilla Tester",
+  "Volume": 0.630957,
+  "Glide": "On",
+  "Pitch Bend Range": 2,
+  "Version": "1.1.8",
+  "Groups": [
+    {
+      "Module": "Group",
+      "Name": "saw osc",
+      "Volume": 0.6033961773,
+      "Output": -1,
+      "ModSources": [
+        {
+          "Module": "ModSourceADSR",
+          "Name": "Filter Env",
+          "Decay Curve": 75.0
+        },
+        {
+          "Module": "ModSourceADSR",
+          "Name": "Amp Env",
+          "Decay Curve": 90.0,
+          "Sustain": 1.0
+        },
+        {
+          "Module": "ModSourceCustom",
+          "Name": "Glide Curve",
+          "ModRoutings": [
+            {
+              "Module": "ModRouting",
+              "Source": "Glide",
+              "Depth": 1.0
+            },
+            {
+              "Module": "ModRouting",
+              "Source": "MIDI CC",
+              "CC": 5,
+              "Depth": 1.0,
+              "Dest": "Time 1",
+              "Curve Active": "On",
+              "Curve": [ -1.0, -0.93000001, -0.87, -0.82999998, -0.79000002, -0.75, -0.70999998, -0.69, -0.65000004, -0.62, -0.59999996, -0.57999998, -0.56, -0.55000001, -0.52999997, -0.51999998, -0.5, -0.47999999, -0.47, -0.44999999, -0.44, -0.43000001, -0.41999999, -0.41, -0.38999999, -0.38, -0.37, -0.34999999, -0.34, -0.34, -0.32999998, -0.32999998, -0.31999999, -0.31, -0.30000001, -0.30000001, -0.28999999, -0.28, -0.27000001, -0.25999999, -0.25, -0.23, -0.22, -0.20999999, -0.2, -0.19, -0.17999999, -0.16, -0.15000001, -0.14, -0.12, -0.11, -0.1, -0.08, -0.06, -0.06, -0.04, -0.03, -0.01, -0.01, 0.01, 0.02, 0.03, 0.03, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1, 0.1, 0.11, 0.12, 0.13, 0.14, 0.15000001, 0.16, 0.16, 0.18000001, 0.19, 0.19, 0.2, 0.20999999, 0.22, 0.23, 0.23999999, 0.25, 0.25, 0.25999999, 0.27000001, 0.28, 0.28, 0.28999999, 0.28999999, 0.30000001, 0.30000001, 0.31, 0.32000002, 0.33000001, 0.34, 0.34, 0.34999999, 0.36000001, 0.37, 0.38, 0.38999999, 0.38999999, 0.40000001, 0.40000001, 0.41, 0.41000003, 0.42000002, 0.42000002, 0.43000001, 0.44, 0.45000002, 0.46000001, 0.47, 0.47999999, 0.48999998, 0.5, 0.50999999, 0.51999998, 0.52999997, 0.54000002, 0.55000001, 0.56, 0.56999999 ]
+            }
+          ],
+          "Curve": [ 1.0, 0.0, 0.0, 1.0, 0.25010288, -3.06986642, 0.0, 0.5, -5.0, 0.0, 0.5, -5.0, 0.0, 0.5, -5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
+        },
+        {
+          "Module": "ModSourceLFO",
+          "Name": "LFO",
+          "ModRoutings": [
+            {
+              "Module": "ModRouting",
+              "Source": "MIDI CC",
+              "Depth": 1.0
+            }
+          ],
+          "Wave": "Triangle",
+          "Rate": 0.694589
+        }
+      ],
+      "ModRoutings": [
+        {
+          "Module": "ModRouting",
+          "Source": "Pitch Bend",
+          "Depth": 1.0,
+          "Smooth": 0.25906554,
+          "Dest": "Tune"
+        },
+        {
+          "Module": "ModRouting",
+          "Source": "Velocity",
+          "Depth": 0.9487031698,
+          "Curve": [ 0.0, 0.0039680079, 0.007998016, 0.0120900242, 0.0162440325, 0.0204600409, 0.0247380495, 0.0290780582, 0.033480067, 0.0379440759, 0.0424700849, 0.0470580941, 0.0517081034, 0.0564201128, 0.0611941224, 0.0660301321, 0.0709281419, 0.0758881518, 0.0809101618, 0.085994172, 0.0911401823, 0.0963481927, 0.1016182032, 0.1069502139, 0.1123442247, 0.1178002356, 0.1233182466, 0.1288982578, 0.1345402691, 0.1402442805, 0.146010292, 0.1518383037, 0.1577283155, 0.1636803274, 0.1696943394, 0.1757703515, 0.1819083638, 0.1881083762, 0.1943703887, 0.2006944014, 0.2070804142, 0.2135284271, 0.2200384401, 0.2266104532, 0.2332444665, 0.2399404799, 0.2466984934, 0.253518507, 0.2604005208, 0.2673445347, 0.2743505487, 0.2814185628, 0.2885485771, 0.2957405915, 0.302994606, 0.3103106206, 0.3176886354, 0.3251286503, 0.3326306653, 0.3401946804, 0.3478206956, 0.355508711, 0.3632587265, 0.3710707421, 0.3789447579, 0.3868807738, 0.3948787898, 0.4029388059, 0.4110608221, 0.4192448385, 0.427490855, 0.4357988716, 0.4441688883, 0.4526009052, 0.4610949222, 0.4696509393, 0.4782689565, 0.4869489739, 0.4956909914, 0.504495009, 0.5133610267, 0.5222890446, 0.5312790626, 0.5403310807, 0.5494450989, 0.5586211172, 0.5678591357, 0.5771591543, 0.586521173, 0.5959451919, 0.6054312109, 0.61497923, 0.6245892492, 0.6342612685, 0.643995288, 0.6537913076, 0.6636493273, 0.6735693471, 0.6835513671, 0.6935953872, 0.7037014074, 0.7138694277, 0.7240994482, 0.7343914688, 0.7447454895, 0.7551615103, 0.7656395313, 0.7761795524, 0.7867815736, 0.7974455949, 0.8081716163, 0.8189596379, 0.8298096596, 0.8407216814, 0.8516957034, 0.8627317255, 0.8738297477, 0.88498977, 0.8962117924, 0.907495815, 0.9188418377, 0.9302498605, 0.9417198834, 0.9532519065, 0.9648459297, 0.976501953, 0.9882199764, 1.0 ]
+        },
+        {
+          "Module": "ModRouting",
+          "Source": "Mod 2",
+          "Depth": 1.0
+        },
+        {
+          "Module": "ModRouting",
+          "Source": "Mod 3",
+          "Depth": 1.0,
+          "Dest": "Tune"
+        },
+        {
+          "Module": "ModRouting",
+          "Source": "Mod 4",
+          "Depth": 0.44666666,
+          "Dest": "Tune"
+        }
+      ],
+      "Filters": [
+        {
+          "Module": "FilterAnalogOsc"
+        },
+        {
+          "Module": "FilterLadder",
+          "ModRoutings": [
+            {
+              "Module": "ModRouting",
+              "Depth": 0.75
+            },
+            {
+              "Module": "ModRouting",
+              "Source": "Key",
+              "Depth": 0.30000001
+            }
+          ],
+          "Cutoff": 0.5
+        }
+      ],
+      "Zones": [
+        { "Module": "Zone", "Sample": "" }
+      ]
+    }
+  ],
+  "Voice Groups": [
+    {
+      "Module": "VoiceGroup",
+      "Max Voices": 8
+    },
+    {
+      "Module": "VoiceGroup",
+      "Max Voices": 1
+    }
+  ],
+  "FX Busses": [
+    {
+      "Module": "EffectBus",
+      "Effects": [
+        {
+          "Module": "EffectChorus",
+          "Bypass": "On",
+          "Delay": 0.17666666,
+          "Voices": 3,
+          "Dry": 0.8899999857,
+          "Wet": 0.70666665
+        }
+      ]
+    }
+  ],
+  "Scripts": [
+    {
+      "Module": "Script",
+      "Script Path": "Built-in UI Sample.txt",
+      "Script": "' SimpleSynth\n'\n' Demonstrating a basic set of synth controls\n'\n\non init\n  'oscillator properties\n  prop_stepped Mode\n  add_step(Mode, \"Poly\")\n  add_step(Mode, \"Mono\")\n  set_prop_param(Mode, PROP_GROUP, \"Osc\")\n\n  prop_stepped Octave = 2\n  add_step(Octave, \"-2\")\n  add_step(Octave, \"-1\")\n  add_step(Octave, \" 0\")\n  add_step(Octave, \"+1\")\n  add_step(Octave, \"+2\")\n  set_prop_param(Octave, PROP_GROUP, \"Osc\")\n\n  prop_exp LFO_Rate(1000000, 10, 100000) = 694589\n  set_prop_param(LFO_Rate, PROP_UNITS, \"Hz\")\n  set_prop_param(LFO_Rate, PROP_GROUP, \"Osc\")\n\n  prop_linear Glide_Time(0, 127, 1)\n  set_prop_param(Glide_Time, PROP_GROUP, \"Osc\")\n\n  'filter properties\n  prop_exp Filter_Cutoff(1000000, 20000, 25000000) = 500000\n  set_prop_param(Filter_Cutoff, PROP_UNITS, \"Hz\")\n  set_prop_param(Filter_Cutoff, PROP_GROUP, \"Filter\")\n\n  prop_linear Filter_Reso(0, 1000, 10)\n  set_prop_param(Filter_Reso, PROP_UNITS, \"%\")\n  set_prop_param(Filter_Reso, PROP_GROUP, \"Filter\")\n\n  prop_linear Filter_Env(-1000, 1000, 10) = 750\n  set_prop_param(Filter_Env, PROP_UNITS, \"%\")\n  set_prop_param(Filter_Env, PROP_GROUP, \"Filter\")\n\n  prop_exp Filter_Attack(1000000, 0, 16000)\n  set_prop_param(Filter_Attack, PROP_UNITS, \"s\")\n  set_prop_param(Filter_Attack, PROP_GROUP, \"Filter\")\n\n  prop_exp Filter_Decay(1000000, 0, 16000) = 500000\n  set_prop_param(Filter_Decay, PROP_UNITS, \"s\")\n  set_prop_param(Filter_Decay, PROP_GROUP, \"Filter\")\n\n  prop_linear Filter_Sustain(0, 1000, 10)\n  set_prop_param(Filter_Sustain, PROP_UNITS, \"%\")\n  set_prop_param(Filter_Sustain, PROP_GROUP, \"Filter\")\n\n  prop_exp Filter_Release(1000000, 0, 16000) = 250000\n  set_prop_param(Filter_Release, PROP_UNITS, \"s\")\n  set_prop_param(Filter_Release, PROP_GROUP, \"Filter\")\n\n  'amp properties\n  prop_exp Amp_Attack(1000000, 0, 16000)\n  set_prop_param(Amp_Attack, PROP_UNITS, \"s\")\n  set_prop_param(Amp_Attack, PROP_GROUP, \"Amp\")\n\n  prop_exp Amp_Decay(1000000, 0, 16000) = 500000\n  set_prop_param(Amp_Decay, PROP_UNITS, \"s\")\n  set_prop_param(Amp_Decay, PROP_GROUP, \"Amp\")\n\n  prop_linear Amp_Sustain(0, 1000, 10) = 1000\n  set_prop_param(Amp_Sustain, PROP_UNITS, \"%\")\n  set_prop_param(Amp_Sustain, PROP_GROUP, \"Amp\")\n\n  prop_exp Amp_Release(1000000, 0, 16000) = 250000\n  set_prop_param(Amp_Release, PROP_UNITS, \"s\")\n  set_prop_param(Amp_Release, PROP_GROUP, \"Amp\")\n\n  prop_linear Amp_Velocity(0, 100, 1) = 50\n  set_prop_param(Amp_Velocity, PROP_UNITS, \"%\")\n  set_prop_param(Amp_Velocity, PROP_GROUP, \"Amp\")\n  var v 'for velocity sensitivity calculations\n\n  prop_boolean Chorus\n\n  prop_decibels Volume(1000000, 12)\n  set_prop_param(Volume, PROP_MIDI_CC, 7)\nend on\n\n\non Mode\n  set_module_param(M_GROUP, 0, 0, 8, Mode) 'select Voice Group\nend on\n\n\non Octave\n  'could set in oscillator directly instead of in \"on note\"\n  'set_module_param(M_GROUP+0, M_FILTER+1, 0, 2, 166666 + 166667 * Octave)\nend on\n\n\non note\n  'adjust octave\n  set_key(EVENT_ID, EVENT_KEY + 12 * Octave - 24)\nend on\n\n\non LFO_Rate\n  set_module_param(M_GROUP, M_MOD_SRC+4, 0, 3, LFO_Rate)\nend on\n\n\non Glide_Time 'set MIDI CC used as a mod source\n  set_controller(5, Glide_Time)\nend on\n\n\non Filter_Cutoff\n  set_module_param(M_GROUP, M_FILTER+2, 0, 2, Filter_Cutoff)\nend on\n\n\non Filter_Reso\n  set_module_param(M_GROUP, M_FILTER+2, 0, 3, 1000 * Filter_Reso)\nend on\n\n\non Filter_Env\n  set_module_param(M_GROUP, M_FILTER+2, M_MOD+1, 4, -Filter_Env) 'Invert\n  set_module_param(M_GROUP, M_FILTER+2, M_MOD+1, 5, 1000 * abs(Filter_Env)) 'Depth\nend on\n\n\non Filter_Attack\n  set_module_param(M_GROUP, M_MOD_SRC+1, 0, 2, Filter_Attack)\nend on\n\n\non Filter_Decay\n  set_module_param(M_GROUP, M_MOD_SRC+1, 0, 5, Filter_Decay)\nend on\n\n\non Filter_Sustain\n  set_module_param(M_GROUP, M_MOD_SRC+1, 0, 7, 1000 * Filter_Sustain)\nend on\n\n\non Filter_Release\n  set_module_param(M_GROUP, M_MOD_SRC+1, 0, 8, Filter_Release)\nend on\n\n\non Amp_Attack\n  set_module_param(M_GROUP, M_MOD_SRC+2, 0, 2, Amp_Attack)\nend on\n\n\non Amp_Decay\n  set_module_param(M_GROUP, M_MOD_SRC+2, 0, 5, Amp_Decay)\nend on\n\n\non Amp_Sustain\n  set_module_param(M_GROUP, M_MOD_SRC+2, 0, 7, 1000 * Amp_Sustain)\nend on\n\n\non Amp_Release\n  set_module_param(M_GROUP, M_MOD_SRC+2, 0, 8, Amp_Release)\nend on\n\n\non Amp_Velocity\n  v = 100 - Amp_Velocity\n  v = 1000000 - v * v * v\n  set_module_param(M_GROUP, 0, M_MOD+2, 5, v)\nend on\n\n\non Chorus\n  set_module_param(M_BUS+1, M_EFFECT+1, 0, 1, 1 - Chorus)\nend on\n\n\non Volume\n  set_module_param(M_INST, 0, 0, 4, Volume)\nend on\n\n"
+    }
+  ]
+}

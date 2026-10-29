@@ -1,0 +1,184 @@
+' SimpleSynth
+'
+' Demonstrating a basic set of synth controls
+'
+
+on init
+  'oscillator properties
+  prop_stepped Mode
+  add_step(Mode, "Poly")
+  add_step(Mode, "Mono")
+  set_prop_param(Mode, PROP_GROUP, "Osc")
+
+  prop_stepped Octave = 2
+  add_step(Octave, "-2")
+  add_step(Octave, "-1")
+  add_step(Octave, " 0")
+  add_step(Octave, "+1")
+  add_step(Octave, "+2")
+  set_prop_param(Octave, PROP_GROUP, "Osc")
+
+  prop_exp LFO_Rate(1000000, 10, 100000) = 694589
+  set_prop_param(LFO_Rate, PROP_UNITS, "Hz")
+  set_prop_param(LFO_Rate, PROP_GROUP, "Osc")
+
+  prop_linear Glide_Time(0, 127, 1)
+  set_prop_param(Glide_Time, PROP_GROUP, "Osc")
+
+  'filter properties
+  prop_exp Filter_Cutoff(1000000, 20000, 25000000) = 500000
+  set_prop_param(Filter_Cutoff, PROP_UNITS, "Hz")
+  set_prop_param(Filter_Cutoff, PROP_GROUP, "Filter")
+
+  prop_linear Filter_Reso(0, 1000, 10)
+  set_prop_param(Filter_Reso, PROP_UNITS, "%")
+  set_prop_param(Filter_Reso, PROP_GROUP, "Filter")
+
+  prop_linear Filter_Env(-1000, 1000, 10) = 750
+  set_prop_param(Filter_Env, PROP_UNITS, "%")
+  set_prop_param(Filter_Env, PROP_GROUP, "Filter")
+
+  prop_exp Filter_Attack(1000000, 0, 16000)
+  set_prop_param(Filter_Attack, PROP_UNITS, "s")
+  set_prop_param(Filter_Attack, PROP_GROUP, "Filter")
+
+  prop_exp Filter_Decay(1000000, 0, 16000) = 500000
+  set_prop_param(Filter_Decay, PROP_UNITS, "s")
+  set_prop_param(Filter_Decay, PROP_GROUP, "Filter")
+
+  prop_linear Filter_Sustain(0, 1000, 10)
+  set_prop_param(Filter_Sustain, PROP_UNITS, "%")
+  set_prop_param(Filter_Sustain, PROP_GROUP, "Filter")
+
+  prop_exp Filter_Release(1000000, 0, 16000) = 250000
+  set_prop_param(Filter_Release, PROP_UNITS, "s")
+  set_prop_param(Filter_Release, PROP_GROUP, "Filter")
+
+  'amp properties
+  prop_exp Amp_Attack(1000000, 0, 16000)
+  set_prop_param(Amp_Attack, PROP_UNITS, "s")
+  set_prop_param(Amp_Attack, PROP_GROUP, "Amp")
+
+  prop_exp Amp_Decay(1000000, 0, 16000) = 500000
+  set_prop_param(Amp_Decay, PROP_UNITS, "s")
+  set_prop_param(Amp_Decay, PROP_GROUP, "Amp")
+
+  prop_linear Amp_Sustain(0, 1000, 10) = 1000
+  set_prop_param(Amp_Sustain, PROP_UNITS, "%")
+  set_prop_param(Amp_Sustain, PROP_GROUP, "Amp")
+
+  prop_exp Amp_Release(1000000, 0, 16000) = 250000
+  set_prop_param(Amp_Release, PROP_UNITS, "s")
+  set_prop_param(Amp_Release, PROP_GROUP, "Amp")
+
+  prop_linear Amp_Velocity(0, 100, 1) = 50
+  set_prop_param(Amp_Velocity, PROP_UNITS, "%")
+  set_prop_param(Amp_Velocity, PROP_GROUP, "Amp")
+  var v 'for velocity sensitivity calculations
+
+  prop_boolean Chorus
+
+  prop_decibels Volume(1000000, 12)
+  set_prop_param(Volume, PROP_MIDI_CC, 7)
+end on
+
+
+on Mode
+  set_module_param(M_GROUP, 0, 0, 8, Mode) 'select Voice Group
+end on
+
+
+on Octave
+  'could set in oscillator directly instead of in "on note"
+  'set_module_param(M_GROUP+0, M_FILTER+1, 0, 2, 166666 + 166667 * Octave)
+end on
+
+
+on note
+  'adjust octave
+  set_key(EVENT_ID, EVENT_KEY + 12 * Octave - 24)
+end on
+
+
+on LFO_Rate
+  set_module_param(M_GROUP, M_MOD_SRC+4, 0, 3, LFO_Rate)
+end on
+
+
+on Glide_Time 'set MIDI CC used as a mod source
+  set_controller(5, Glide_Time)
+end on
+
+
+on Filter_Cutoff
+  set_module_param(M_GROUP, M_FILTER+2, 0, 2, Filter_Cutoff)
+end on
+
+
+on Filter_Reso
+  set_module_param(M_GROUP, M_FILTER+2, 0, 3, 1000 * Filter_Reso)
+end on
+
+
+on Filter_Env
+  set_module_param(M_GROUP, M_FILTER+2, M_MOD+1, 4, -Filter_Env) 'Invert
+  set_module_param(M_GROUP, M_FILTER+2, M_MOD+1, 5, 1000 * abs(Filter_Env)) 'Depth
+end on
+
+
+on Filter_Attack
+  set_module_param(M_GROUP, M_MOD_SRC+1, 0, 2, Filter_Attack)
+end on
+
+
+on Filter_Decay
+  set_module_param(M_GROUP, M_MOD_SRC+1, 0, 5, Filter_Decay)
+end on
+
+
+on Filter_Sustain
+  set_module_param(M_GROUP, M_MOD_SRC+1, 0, 7, 1000 * Filter_Sustain)
+end on
+
+
+on Filter_Release
+  set_module_param(M_GROUP, M_MOD_SRC+1, 0, 8, Filter_Release)
+end on
+
+
+on Amp_Attack
+  set_module_param(M_GROUP, M_MOD_SRC+2, 0, 2, Amp_Attack)
+end on
+
+
+on Amp_Decay
+  set_module_param(M_GROUP, M_MOD_SRC+2, 0, 5, Amp_Decay)
+end on
+
+
+on Amp_Sustain
+  set_module_param(M_GROUP, M_MOD_SRC+2, 0, 7, 1000 * Amp_Sustain)
+end on
+
+
+on Amp_Release
+  set_module_param(M_GROUP, M_MOD_SRC+2, 0, 8, Amp_Release)
+end on
+
+
+on Amp_Velocity
+  v = 100 - Amp_Velocity
+  v = 1000000 - v * v * v
+  set_module_param(M_GROUP, 0, M_MOD+2, 5, v)
+end on
+
+
+on Chorus
+  set_module_param(M_BUS+1, M_EFFECT+1, 0, 1, 1 - Chorus)
+end on
+
+
+on Volume
+  set_module_param(M_INST, 0, 0, 4, Volume)
+end on
+

@@ -1,0 +1,15 @@
+standalone.log
+deploy.log
+.DS_Store
+**/.DS_Store
+src/index.yaml
+node_modules/
+.ge-oyster-build-workspace/
+.vscode/ipch
+.gorilla-engine-artifacts/
+signing*Key*
+jsEncryptionKey*
+docs/
+dist/**/*
+.vscode/**
+.agents/

@@ -1,0 +1,14 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "search.exclude": {
+    "**/node_modules": false
+  },
+  "search.useIgnoreFiles": false,
+  "editor.formatOnSave": true,
+  "git.ignoreLimitWarning": true
+}
