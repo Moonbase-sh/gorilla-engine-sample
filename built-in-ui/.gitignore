@@ -1,0 +1,10 @@
+node_modules
+*.log
+.ge-oyster-build-workspace
+.gorilla-engine-artifacts
+.DS_Store
+**/.DS_Store
+buildCredentials.json
+esbuild
+installer
+src/generated

@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "bundler",
+    "jsx": "react",
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": false,
+    "inlineSourceMap": true,
+    "target": "ES2022",
+    "outDir": "build",
+    "rootDir": "src",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "module": "commonjs",
+    "noEmit": true,
+    "types": ["node", "gorilla-engine"]
+  },
+  "include": ["src/**/*"]
+}

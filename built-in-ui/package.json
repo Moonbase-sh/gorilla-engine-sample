@@ -1,0 +1,39 @@
+{
+  "name": "gorilla-engine-sample-built-in-ui",
+  "version": "1.0.0",
+  "description": "Sample Gorilla Engine plugin using Moonbase.sh for licensing, with the activation overlay of @moonbase.sh/gorilla-engine",
+  "scripts": {
+    "postinstall": "npm run prepare:artifacts && npx tsc",
+    "beautify": "npx prettier --write .",
+    "testBeauty": "npx prettier --check .",
+    "build:ui": "npx gorilla-engine-scripts-deploy -u \"Built-in UI Sample.ugep\" -e ./src/index.tsx --oneshot --no-deploy --build-ui-only",
+    "sync:instruments": "npx gorilla-engine-scripts-deploy -u \"Built-in UI Sample.ugep\" -e ./src/index.tsx --oneshot --no-deploy --sync-instruments-only",
+    "prepare:artifacts": "npm run sync:instruments && npm run build:ui",
+    "start": "npx gorilla-engine-scripts-deploy -u \"Built-in UI Sample.ugep\" -e ./src/index.tsx --standalone",
+    "start:log": "node dev/scripts/log.cjs start",
+    "deploy:log": "node dev/scripts/log.cjs deploy",
+    "deploy": "npx gorilla-engine-scripts-deploy -u \"Built-in UI Sample.ugep\" -e ./src/index.tsx",
+    "build": "npx gorilla-engine-scripts-build --ugep \"Built-in UI Sample.ugep\"",
+    "buildAndInstall": "npx gorilla-engine-scripts-build --ugep \"Built-in UI Sample.ugep\" --install"
+  },
+  "author": "Moonbase",
+  "license": "ISC",
+  "devDependencies": {
+    "@gorilla-engine-sdk/gorilla-engine-scripts": "^1.3.4",
+    "@types/gorilla-engine": "^1.1.33",
+    "@types/node": "^18.0.6",
+    "@types/react": "^19.2.16",
+    "prettier": "^3.8.3",
+    "typescript": "^6.0.2"
+  },
+  "dependencies": {
+    "@gorilla-engine-sdk/ge-blob-manager": "^1.0.5",
+    "@gorilla-engine-sdk/ge-dialogs-lib": "^0.5.7",
+    "@gorilla-engine-sdk/ge-labeled-components": "^0.7.0",
+    "@gorilla-engine-sdk/ge-preset-browser": "^0.5.6",
+    "@gorilla-engine-sdk/ge-session-presets-lib": "^0.5.13",
+    "@gorilla-engine-sdk/gorilla-engine-react": "^1.6.1",
+    "@moonbase.sh/gorilla-engine": "^0.2.1",
+    "react": "^19.2.7"
+  }
+}
