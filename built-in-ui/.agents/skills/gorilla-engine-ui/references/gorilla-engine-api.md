@@ -29,7 +29,7 @@ const instrument = blob.loadInstrument(name: string): Instrument;
 
 // Usage Example:
 const blob = GorillaEngine.loadBlob('PATH_TO_BLOB');
-const instrument = GorillaEngine.loadInstrument(blob.getInstrumentNames()[0]);
+const instrument = blob.loadInstrument(blob.getInstrumentNames()[0]);
 
 // Other ways to obtain an instrument:
 GorillaEngine.createEmptyInstrument(): Instrument;
@@ -133,7 +133,7 @@ player.on(eventName: string, callback: any): void;
 ## `GorillaEngine.UI` Namespace
 
 ```ts
-// Load a YAML layout file (used by loadUI() helper in gorilla-engine-react):
+// Load a YAML layout file (used by the loadUI() helper in @gorilla-engine-sdk/gorilla-engine-react):
 GorillaEngine.UI.loadUIfromYAML(ymlPath: string): void;
 
 // Auto-generate a generic UI from the active blob (useful for prototyping):

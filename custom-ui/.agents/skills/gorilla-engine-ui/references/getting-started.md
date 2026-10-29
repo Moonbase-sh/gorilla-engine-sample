@@ -7,7 +7,7 @@
 Creates a native window and mounts the React tree. No YAML needed.
 
 ```tsx
-import { createUI } from 'gorilla-engine-react';
+import { createUI } from '@gorilla-engine-sdk/gorilla-engine-react';
 
 createUI(<App />, 1280, 760);
 createUI(<App />, 800, 600, { rootNodeId: 'myRoot', logger: myLogger });
@@ -26,7 +26,7 @@ createUI(<App />, 800, 600, { rootNodeId: 'myRoot', logger: myLogger });
 Loads a YAML layout file, then mounts React into a container node.
 
 ```tsx
-import { loadUI } from 'gorilla-engine-react';
+import { loadUI } from '@gorilla-engine-sdk/gorilla-engine-react';
 
 // Uses default: <resourcePath>/<pluginName>.yaml, rootNodeId='root'
 loadUI(<App />);
@@ -97,7 +97,7 @@ setNormValue(0.5);
 ## Typical App Structure
 
 ```tsx
-import { createUI, useInstrument, useInstrumentProperty } from 'gorilla-engine-react';
+import { createUI, useInstrument, useInstrumentProperty } from '@gorilla-engine-sdk/gorilla-engine-react';
 
 function App() {
   const [instrument, instrumentName, blob] = useInstrument();

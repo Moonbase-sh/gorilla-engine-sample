@@ -44,7 +44,7 @@ function describe(state: ActivationState, tokenSaved: boolean): [title: string, 
   if (state.status === 'notCovered') {
     return [
       'Your license does not cover this version',
-      `Upgrade your license to use version ${state.notCovered?.appVersion} of ${plugin}.`,
+      `Upgrade your license to use version ${state.notCovered?.appVersion} of ${plugin}, then check it again.`,
     ];
   }
 
@@ -115,6 +115,7 @@ export function LicenseActivation({ width, height }: Props) {
   const error = problem ?? state.error?.message;
   const browserUrl = state.activation?.browserUrl;
   const canActivate = state.status !== 'loading' && state.status !== 'activating';
+  const notCovered = state.status === 'notCovered';
   const panelHeight = error ? 300 : 232;
 
   return (
@@ -192,21 +193,33 @@ export function LicenseActivation({ width, height }: Props) {
               x={24}
               y={132}
               width={372}
-              text={state.status === 'notCovered' ? 'Upgrade' : 'Activate'}
+              text={notCovered ? 'Upgrade' : 'Activate'}
               backgroundColor="5177E0"
-              onClick={run(() =>
-                state.status === 'notCovered' ? licensing.upgradeLicense() : licensing.activate(),
-              )}
+              onClick={run(() => (notCovered ? licensing.upgradeLicense() : licensing.activate()))}
             />
-            <geButton
-              {...BUTTON}
-              x={24}
-              y={176}
-              width={182}
-              text="Activate offline"
-              backgroundColor="21242E"
-              onClick={run(saveDeviceToken)}
-            />
+            {notCovered ? (
+              // The upgrade page doesn't unlock the plugin by itself: once the
+              // customer has bought the upgrade, checking the license again does
+              <geButton
+                {...BUTTON}
+                x={24}
+                y={176}
+                width={182}
+                text={state.refreshing ? 'Checking…' : 'Check again'}
+                backgroundColor="21242E"
+                onClick={run(() => licensing.refresh())}
+              />
+            ) : (
+              <geButton
+                {...BUTTON}
+                x={24}
+                y={176}
+                width={182}
+                text="Activate offline"
+                backgroundColor="21242E"
+                onClick={run(saveDeviceToken)}
+              />
+            )}
             <geButton
               {...BUTTON}
               x={214}

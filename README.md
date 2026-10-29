@@ -209,7 +209,7 @@ The controller is also how you gate features of your own: `licensing.isLicensed(
 | `unlicensed` | **Activate**, **Activate offline** and **Select license**, and why the plugin was locked when `lockReason` says |
 | `activating` | That activation finishes in the browser, with **Open the browser again** and **Cancel** |
 | `trialExpired` | That the trial has ended, with the same buttons as `unlicensed` |
-| `notCovered` | That the license doesn't cover this version, with **Upgrade** |
+| `notCovered` | That the license doesn't cover this version, with **Upgrade**, and **Check again** for once the customer has bought it |
 
 Activation is a single call. The controller opens the browser, and polls in the background until the customer has activated, when the panel goes away by itself:
 

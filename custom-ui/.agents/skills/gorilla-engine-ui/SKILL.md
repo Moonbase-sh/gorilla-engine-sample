@@ -40,7 +40,7 @@ Build native audio plugin UIs using a custom React reconciler that bridges React
 ## Quick Start
 
 ```tsx
-import { createUI, useInstrument, useInstrumentProperty } from 'gorilla-engine-react';
+import { createUI, useInstrument, useInstrumentProperty } from '@gorilla-engine-sdk/gorilla-engine-react';
 
 function App() {
   const [instrument] = useInstrument();
